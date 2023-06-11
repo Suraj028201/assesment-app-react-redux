@@ -24,8 +24,11 @@ const QuestionPage = () => {
   };
 
   const varifyUserAnswer = () => {
-    if(selectedOption.optionName === questions.answer){
+    if(selectedOption.optionName === questions.answer && !isQuestionAnswered(questions?.question)){
       setScore(prevScore => prevScore +1);
+    }
+    else if(isQuestionAnswered(questions?.question) && selectedOption.optionName !== questions.answer){
+      setScore(prevScore => prevScore - 1);
     }
   }
 
